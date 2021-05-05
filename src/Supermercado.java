@@ -1,5 +1,4 @@
 import java.util.Scanner;
-mas que grande merda
 public class Supermercado {
     private static String escolha;
     private static String categoria;
