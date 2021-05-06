@@ -18,6 +18,7 @@ public class Supermercado {
                 System.out.println("\nSupermercado David Garcia\n");
                 System.out.println("Escolha uma opção:");
                 System.out.println("A- Adicionar stock");
+                System.out.println("L- Listar produtos");
                 System.out.println("V- Efetuar uma venda");
                 System.out.println("G- Novo produto granel");
                 System.out.println("E- Novo produto embalado");
@@ -26,7 +27,7 @@ public class Supermercado {
                 System.out.println("");
                 escolha = scMenu.next().charAt(0);
                 escolha = Character.toLowerCase(escolha);
-            } while (!(escolha == 'a' || escolha == 'v' || escolha == 'g' || escolha == 'e' || escolha == 'c' || escolha == 's'));
+            } while (!(escolha == 'a' || escolha == 'd'  || escolha == 'v' || escolha == 'g' || escolha == 'e' || escolha == 'c' || escolha == 's'));
             switch (escolha) {
                 case 'a':
                     System.out.println("Adicionar stock a um produto");
@@ -41,6 +42,13 @@ public class Supermercado {
                         case 'g':
                             break;
                     }
+                    break;
+                case 'd':
+                    System.out.println("LISTAR TODOS OS PRODUTOS EXISTENTES");
+
+
+
+
                     break;
                 case 'v':
                     System.out.println("Processamento de venda numero" + ".");
