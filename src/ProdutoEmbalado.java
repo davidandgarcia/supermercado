@@ -5,7 +5,7 @@ public class ProdutoEmbalado extends Produto{
     public ProdutoEmbalado(String codBarras, float preco, String nome, String datavalidade, int quantidade) {
         super(codBarras, preco, nome);
         this.datavalidade = datavalidade;
-        this.quantidade = 0;
+        this.quantidade = quantidade;
     }
 
     public String getDatavalidade() {

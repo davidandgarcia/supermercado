@@ -1,6 +1,7 @@
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Scanner;
 
 public class Stocks {
 
@@ -57,7 +58,7 @@ public class Stocks {
         while (it.hasNext()) {
             ProdutoGranel produtoGranel = it.next();
             System.out.println("Cod Barras : " + produtoGranel.getCodBarras() + " | Nome: " + produtoGranel.getNome() +
-                    " | Peso: " + produtoGranel.getPeso() + " | Preço: " + produtoGranel.getPreco());
+                    " | Peso: " + produtoGranel.getPeso() + " | Preço: " + produtoGranel.getPreco() + " | Quantidade: " + produtoGranel.getQuantidade());
         }
     }
 
@@ -68,7 +69,7 @@ public class Stocks {
         while (it.hasNext()) {
             ProdutoEmbalado produtoEmbalado = it.next();
             System.out.println("Cod Barras : " + produtoEmbalado.getCodBarras() + " | Nome: " + produtoEmbalado.getNome() +
-                    " | Validade: " + produtoEmbalado.getDatavalidade() + " | Preço: " + produtoEmbalado.getPreco());
+                    " | Validade: " + produtoEmbalado.getDatavalidade() + " | Preço: " + produtoEmbalado.getPreco() + " | Quantidade: " + produtoEmbalado.getQuantidade());
         }
     }
 
@@ -78,8 +79,43 @@ public class Stocks {
 
         while (it.hasNext()) {
             Cabaz cabaz = it.next();
-            System.out.println("Cod Barras : " + cabaz.getCodBarras() + " | Nome: " + cabaz.getNome() + " | Preço: " + cabaz.getPreco() + " | Desconto: " + cabaz.getDesconto());
+            System.out.println("Cod Barras : " + cabaz.getCodBarras() + " | Nome: " + cabaz.getNome() + " | Preço: " + cabaz.getPreco() + " | Desconto: " + cabaz.getDesconto() + " | Quantidade: " + cabaz.getQuantidade());
+        }
+    }
+
+    public void aumentaEmbalado(String cod) {
+        boolean found = false;
+        Iterator<ProdutoEmbalado> it = produtosEmbalados.iterator();
+        while (!found && it.hasNext()) {
+            ProdutoEmbalado prodemb = it.next();
+            if (prodemb.getCodBarras().equals(cod)) {
+                found = true;
+
+                int quant;
+                Scanner scquant = new Scanner(System.in);
+                System.out.println("Quantidade que deseja adicionar:");
+                quant = scquant.nextInt();
+                prodemb.quantidade += quant;
+                System.out.println("Stock alterado com sucesso.");
+            }
+        }
+    }
+
+    public void aumentaGranel(String cod) {
+        boolean found = false;
+        Iterator<ProdutoGranel> it = produtosAGranel.iterator();
+        while (!found && it.hasNext()) {
+            ProdutoGranel prodgranel = it.next();
+            if (prodgranel.getCodBarras().equals(cod)) {
+                found = true;
+
+                int quant;
+                Scanner scquant = new Scanner(System.in);
+                System.out.println("Quantidade que deseja adicionar:");
+                quant = scquant.nextInt();
+                prodgranel.quantidade += quant;
+                System.out.println("Stock alterado com sucesso.");
+            }
         }
     }
 }
-

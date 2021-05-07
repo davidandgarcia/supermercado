@@ -45,13 +45,29 @@ public class Supermercado {
                             if(stock.produtosEmbalados.isEmpty()){
                                 System.out.println("Nao existem produtos embalado em stock, adicione na opcao E");
                             }else{
+                                System.out.println("Adicionar stock ao produto...");
                                 System.out.println("Codigo de barras: ");
                                 Scanner referenciaEmbalado = new Scanner(System.in);
                                 String referencia;
                                 referencia = referenciaEmbalado.nextLine();
+                                stock.aumentaEmbalado(referencia);
+                                stock.listarProdutosEmbalados();
                             }
                             break;
                         case 'g':
+                            System.out.println("ADICIONAR STOCK A PRODUTO GRANEL");
+                            stock.listarProdutosGranel();
+                            if(stock.produtosAGranel.isEmpty()){
+                                System.out.println("Nao existem produtos a granel em stock, adicione na opcao G");
+                            }else{
+                                System.out.println("Adicionar stock ao produto...");
+                                System.out.println("Codigo de barras: ");
+                                Scanner referenciaGranel = new Scanner(System.in);
+                                String referencia;
+                                referencia = referenciaGranel.nextLine();
+                                stock.aumentaGranel(referencia);
+                                stock.listarProdutosGranel();
+                            }
                             break;
                     }
                     break;
@@ -72,10 +88,13 @@ public class Supermercado {
                     System.out.println("Preço: ");
                     Float precoGranel = scanner.nextFloat();
 
-                    ProdutoGranel produtoGranel1 = new ProdutoGranel(codBarrasGranel, precoGranel, nomeGranel, pesoGranel);
+                    System.out.println("Quantidade: ");
+                    Integer quantidadeGranel = scanner.nextInt();
+
+                    ProdutoGranel produtoGranel1 = new ProdutoGranel(codBarrasGranel, precoGranel, nomeGranel, pesoGranel, quantidadeGranel);
                     System.out.println("Foi adicionado um novo produto a granel");
                     System.out.println("Cod Barras : " + produtoGranel1.getCodBarras() + " | Nome: " + produtoGranel1.getNome() +
-                            " | Peso: " + produtoGranel1.getPeso() + " | Preço: " + produtoGranel1.getPreco());
+                            " | Peso: " + produtoGranel1.getPeso() + " | Preço: " + " | Quantidade: " + produtoGranel1.getQuantidade());
                     break;
                 case 'e':
                     System.out.println("NOVO PRODUTO EMBALADO");
@@ -92,11 +111,27 @@ public class Supermercado {
                     ProdutoEmbalado produtoEmbalado1 = new ProdutoEmbalado(codBarrasEmbalado, precoEmbalado, nomeEmbalado, datavalidadeEmbalado, quantidadeEmbalado);
                     System.out.println("Foi adicionado um novo produto embalado");
                     System.out.println("Cod Barras : " + produtoEmbalado1.getCodBarras() + " | Nome: " + produtoEmbalado1.getNome() +
-                            " | Validade: " + produtoEmbalado1.getDatavalidade() + " | Preço: " + produtoEmbalado1.getPreco());
+                            " | Validade: " + produtoEmbalado1.getDatavalidade() + " | Preço: " + produtoEmbalado1.getPreco() + " | Quantidade: " + produtoEmbalado1.getQuantidade());
                     stock.inserirEmbalado(produtoEmbalado1);
                     break;
                 case 'c':
-                    System.out.println("Novo cabaz");
+                    System.out.println("NOVO CABAZ");
+                    System.out.println("Quais os produtos disponiveis para adicionar a um novo cabaz");
+                    stock.listarProdutosEmbalados();
+                    stock.listarProdutosGranel();
+                    System.out.println("-----------");
+                    System.out.println("Cod Barras: ");
+                    String codBarrasCabaz = scanner.nextLine();
+                    System.out.println("Nome: ");
+                    String nomeCabaz = scanner.nextLine();
+                    System.out.println("Desconto: ");
+                    Integer descontoCabaz = scanner.nextInt();
+                    System.out.println("Preço: ");
+                    Integer precoCabaz = scanner.nextInt();
+                    //ESCOLHER OS PRODUTOS DISPONIVEIS
+
+                    //Cabaz cabaz1 = new Cabaz(codBarrasCabaz, precoCabaz, nomeCabaz, descontoCabaz, lista de produtos)
+                    //stock.inserirCabaz(cabaz1);
                     break;
                 case 'l':
                     System.out.println("LISTAR TODOS OS PRODUTOS EXISTENTES");
