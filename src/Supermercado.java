@@ -13,21 +13,23 @@ public class Supermercado {
         Scanner scCategoria = new Scanner(System.in);
         Scanner scanner = new Scanner(System.in);
 
+        Stocks stock = new Stocks();
+
         do {
             do {
                 System.out.println("\nSupermercado David Garcia\n");
                 System.out.println("Escolha uma opção:");
-                System.out.println("A- Adicionar stock");
-                System.out.println("L- Listar produtos");
+                System.out.println("A- Aumentar stock");
                 System.out.println("V- Efetuar uma venda");
                 System.out.println("G- Novo produto granel");
                 System.out.println("E- Novo produto embalado");
+                System.out.println("L- Listar todos os produtos");
                 System.out.println("C- Novo cabaz");
                 System.out.println("S- Sair");
                 System.out.println("");
                 escolha = scMenu.next().charAt(0);
                 escolha = Character.toLowerCase(escolha);
-            } while (!(escolha == 'a' || escolha == 'd'  || escolha == 'v' || escolha == 'g' || escolha == 'e' || escolha == 'c' || escolha == 's'));
+            } while (!(escolha == 'a' || escolha == 'l'  || escolha == 'v' || escolha == 'g' || escolha == 'e' || escolha == 'c' || escolha == 's'));
             switch (escolha) {
                 case 'a':
                     System.out.println("Adicionar stock a um produto");
@@ -38,20 +40,23 @@ public class Supermercado {
                     } while (!(categoria == 'e' || categoria == 'g'));
                     switch (categoria) {
                         case 'e':
+                            System.out.println("ADICIONAR STOCK A PRODUTO EMBALADO");
+                            stock.listarProdutosEmbalados();
+                            if(stock.produtosEmbalados.isEmpty()){
+                                System.out.println("Nao existem produtos embalado em stock, adicione na opcao E");
+                            }else{
+                                System.out.println("Codigo de barras: ");
+                                Scanner referenciaEmbalado = new Scanner(System.in);
+                                String referencia;
+                                referencia = referenciaEmbalado.nextLine();
+                            }
                             break;
                         case 'g':
                             break;
                     }
                     break;
-                case 'd':
-                    System.out.println("LISTAR TODOS OS PRODUTOS EXISTENTES");
-
-
-
-
-                    break;
                 case 'v':
-                    System.out.println("Processamento de venda numero" + ".");
+                    System.out.println("PROCESSAMENTO DE UMA NOVA VENDA");
                     break;
                 case 'g':
                     System.out.println("NOVO PRODUTO A GRANEL");
@@ -87,10 +92,17 @@ public class Supermercado {
                     ProdutoEmbalado produtoEmbalado1 = new ProdutoEmbalado(codBarrasEmbalado, precoEmbalado, nomeEmbalado, datavalidadeEmbalado, quantidadeEmbalado);
                     System.out.println("Foi adicionado um novo produto embalado");
                     System.out.println("Cod Barras : " + produtoEmbalado1.getCodBarras() + " | Nome: " + produtoEmbalado1.getNome() +
-                            " | Validade: " + produtoEmbalado1.getDatavalidade() + " | Quantidade: " + produtoEmbalado1.getQuantidade() +
-                            " | Preço: " + produtoEmbalado1.getPreco());
+                            " | Validade: " + produtoEmbalado1.getDatavalidade() + " | Preço: " + produtoEmbalado1.getPreco());
+                    stock.inserirEmbalado(produtoEmbalado1);
+                    break;
                 case 'c':
                     System.out.println("Novo cabaz");
+                    break;
+                case 'l':
+                    System.out.println("LISTAR TODOS OS PRODUTOS EXISTENTES");
+                    stock.listarProdutosEmbalados();
+                    stock.listarProdutosGranel();
+                    stock.listarCabazes();
                     break;
                 case 's':
                     System.out.println("Até à próxima!");

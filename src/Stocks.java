@@ -32,53 +32,54 @@ public class Stocks {
         this.cabazes = cabazes;
     }
 
-    public void inserirGranel(ProdutoGranel insertGranel){
+    public void inserirGranel(ProdutoGranel insertGranel) {
         produtosAGranel.add(insertGranel);
     }
 
-    public void inserirEmbalado(ProdutoEmbalado insertEmbalado){
+    public void inserirEmbalado(ProdutoEmbalado insertEmbalado) {
         produtosEmbalados.add(insertEmbalado);
     }
 
-    public void inserirCabaz(Cabaz insertCabaz){
+    public void inserirCabaz(Cabaz insertCabaz) {
         cabazes.add(insertCabaz);
     }
 
-    public Stocks(){
+    public Stocks() {
         this.produtosAGranel = new ArrayList<ProdutoGranel>();
         this.cabazes = new ArrayList<Cabaz>();
         this.produtosEmbalados = new ArrayList<ProdutoEmbalado>();
     }
 
-    public void listarProdutosGranel(){
+    public void listarProdutosGranel() {
         System.out.println("Lista de todos os produtos a granel");
-        Iterator<ProdutoGranel> itgranel = produtosAGranel.iterator();
+        Iterator<ProdutoGranel> it = produtosAGranel.iterator();
 
-        while(itgranel.hasNext()){
-            ProdutoGranel produtoGranel = itgranel.next();
+        while (it.hasNext()) {
+            ProdutoGranel produtoGranel = it.next();
             System.out.println("Cod Barras : " + produtoGranel.getCodBarras() + " | Nome: " + produtoGranel.getNome() +
                     " | Peso: " + produtoGranel.getPeso() + " | Preço: " + produtoGranel.getPreco());
         }
     }
 
-    public void listarProdutosEmbalados(){
+    public void listarProdutosEmbalados() {
         System.out.println("Lista de todos os produtos embalados");
-        Iterator<ProdutoEmbalado> itembalados = produtosEmbalados.iterator();
+        Iterator<ProdutoEmbalado> it = produtosEmbalados.iterator();
 
-        while(itembalados.hasNext()){
-            ProdutoEmbalado produtoEmbalado = itembalados.next();
+        while (it.hasNext()) {
+            ProdutoEmbalado produtoEmbalado = it.next();
             System.out.println("Cod Barras : " + produtoEmbalado.getCodBarras() + " | Nome: " + produtoEmbalado.getNome() +
                     " | Validade: " + produtoEmbalado.getDatavalidade() + " | Preço: " + produtoEmbalado.getPreco());
         }
     }
 
-    public void listarCabazes(){
+    public void listarCabazes() {
         System.out.println("Lista de todos os cabazes");
-        Iterator<Cabaz> itcabazes = cabazes.iterator();
+        Iterator<Cabaz> it = cabazes.iterator();
 
-        while(itcabazes.hasNext()){
-            Cabaz cabaz = itcabazes.next();
+        while (it.hasNext()) {
+            Cabaz cabaz = it.next();
             System.out.println("Cod Barras : " + cabaz.getCodBarras() + " | Nome: " + cabaz.getNome() + " | Preço: " + cabaz.getPreco() + " | Desconto: " + cabaz.getDesconto());
         }
     }
 }
+
