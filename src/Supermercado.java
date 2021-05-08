@@ -73,6 +73,13 @@ public class Supermercado {
                     break;
                 case 'v':
                     System.out.println("PROCESSAMENTO DE UMA NOVA VENDA");
+                    System.out.println("Lista de todos os produtos existentes");
+                    stock.listarProdutosEmbalados();
+                    stock.listarProdutosGranel();
+                    stock.listarCabazes();
+                    do {
+                        System.out.println("Que produto deseja adicionar('S' para terminar a insersao de produtos) ");
+                    }while (categoria != 's');
                     break;
                 case 'g':
                     System.out.println("NOVO PRODUTO A GRANEL");
